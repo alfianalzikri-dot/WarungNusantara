@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📱 Toko HP Online Terpercaya</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Zall Cellular</div>
+        <ul class="nav-links">
+            <li><a href="#daftar-hp">Pilihan HP</a></li>
+            <li><a href="#ringkasan-pesanan">Keranjang</a></li>
+            <li><a href="#tentang-kami">Tentang Kami</a></li>
+            <li><a href="#hubungi-kami">Hubungi Kami</a></li> </ul>
+        <div class="nav-icon">
+             <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+    </nav>
+
+    <header>
+        <h1>📱 Beli HP Terbaru, Harga Terbaik!</h1>
+        <p>Lihat berbagai pilihan Smartphone terbaik dengan garansi resmi.</p>
+    </header>
+
+    <main>
+        <section id="daftar-hp">
+            <h2>Pilih Smartphone Terbaik</h2>
+            
+            <div class="product-card" data-nama="Samsung Galaxy S24 Ultra" data-harga="14999000">
+                <figure>
+                    <img src="c:\Users\Hype\Downloads\Samsung S24 Ultra.jpg" alt="Samsung Galaxy S24 Ultra">
+                </figure>
+                <div class="card-content">
+                    <h3>Samsung Galaxy S24 Ultra</h3>
+                    <p class="harga">Rp 14.999.000</p>
+                    <p>Layar Dynamic AMOLED, AI Camera 50MP.</p>
+                    <div class="qty-control">
+                        <label for="qty-1">Jumlah:</label>
+                        <input type="number" id="qty-1" value="0" min="0" onchange="hitungTotal()">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card" data-nama="Oppo Reno 14 5G" data-harga="11000000">
+                <figure>
+                    <img src="c:\Users\Hype\Downloads\Reno 14 5G.jpg" alt="Oppo Reno 14 5G">
+                </figure>
+                <div class="card-content">
+                    <h3>Oppo Reno 14 5G</h3>
+                    <p class="harga">Rp 11.000.000</p>
+                    <p>performa tinggi dengan chipset MediaTek Dimensity 8350, kamera 50MP utama dengan telephoto 50MP, serta desain premium dengan bodi kaca, baterai 6.000 mAh, pengisian daya 80W SuperVOOC, dan fitur AI canggih yang berjalan pada Android 15 dengan antarmuka ColorOS 15</p>
+                    <div class="qty-control">
+                        <label for="qty-2">Jumlah:</label>
+                        <input type="number" id="qty-2" value="0" min="0" onchange="hitungTotal()">
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-nama="Xiaomi 14 Ultra" data-harga="12999000">
+                <figure>
+                    <img src="c:\Users\Hype\Downloads\Xiaomi 14 Ultra.jpg" alt="Xiaomi 14 Ultra">
+                </figure>
+                <div class="card-content">
+                    <h3>Xiaomi 14 Ultra</h3>
+                    <p class="harga">Rp 12.999.000</p>
+                    <p>Kamera Leica profesional, Snapdragon 8 Gen 3.</p>
+                    <div class="qty-control">
+                        <label for="qty-3">Jumlah:</label>
+                        <input type="number" id="qty-3" value="0" min="0" onchange="hitungTotal()">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ringkasan-pesanan">
+            <h2>Ringkasan Keranjang Anda</h2>
+            <div id="detail-pesanan">
+                <p>Belum ada item yang dipesan.</p>
+            </div>
+            
+            <div class="payment-selection">
+                <label for="metode-bayar">Pilih Pembayaran:</label>
+                <select id="metode-bayar" onchange="updatePaymentMethod()">
+                    <option value="Transfer Bank">Transfer Bank</option>
+                    <option value="Kartu Kredit">Kartu Kredit / Debit</option>
+                    <option value="E-Wallet">E-Wallet (Dana/Gopay)</option>
+                    <option value="Bayar di Tempat">Bayar di Tempat (COD)</option>
+                </select>
+            </div>
+            
+            <div class="payment-selection" style="margin-bottom: 20px;">
+                <label for="alamat-kirim">Pilih Alamat Pengiriman:</label>
+                <select id="alamat-kirim" onchange="updateAlamat()">
+                    <option value="Palembang">Palembang</option>
+                    <option value="Prabumulih">Prabumulih</option>
+                    <option value="Muara Enim">Muara Enim</option>
+                    <option value="Tanjung Enim">Tanjung Enim</option>
+                </select>
+            </div>
+
+            <div class="total-area info-payment">
+                <p>Alamat Terpilih:</p>
+                <p id="alamat-terpilih">Palembang</p>
+            </div>
+            
+            <div class="total-area info-payment">
+                <p>Metode Pembayaran:</p>
+                <p id="metode-terpilih">Transfer Bank</p>
+            </div>
+            
+            <div class="total-area">
+                <p>Subtotal:</p>
+                <p id="subtotal">Rp 0</p>
+            </div>
+            <div class="total-area">
+                <p>Biaya Pengiriman (Asuransi + Cepat):</p>
+                <p id="biaya-kirim">Rp 30.000</p> 
+            </div>
+            <div class="total-area grand-total">
+                <p><strong>TOTAL AKHIR:</strong></p>
+                <p id="total-akhir"><strong>Rp 30.000</strong></p>
+            </div>
+            
+            <button id="btn-pesan" onclick="processPemesanan()">
+                Lanjut ke Pembayaran
+            </button>
+
+            <div id="konfirmasi-pembayaran" class="konfirmasi-box hidden">
+                <h3>✅ Pembayaran Berhasil!</h3>
+                <p>Terima kasih! Pesanan Anda telah dikonfirmasi.</p>
+                <div id="struk-content">
+                    </div>
+                <button onclick="cetakStruk()" class="btn-cetak">
+                    <i class="fa-solid fa-print"></i> Cetak Struk
+                </button>
+                <button onclick="resetApp()" class="btn-baru">
+                    Buat Pesanan Baru
+                </button>
+            </div>
+        </section>
+
+        <section id="tentang-kami" class="full-width-section">
+            <h2>Tentang Zall Cellular 🌟</h2>
+            <div class="info-card">
+                <p>Didirikan pada tahun 2026, **Zall Cellular** bertekad menjadi toko *smartphone* daring terdepan di Indonesia. Kami hanya menyediakan produk dengan garansi resmi dan berkomitmen untuk memberikan harga terbaik serta pelayanan pelanggan yang cepat dan terpercaya.</p>
+                <p>Visi kami adalah menjadikan teknologi terbaru lebih mudah diakses oleh semua orang.</p>
+                <div class="keunggulan-list">
+                    <h4>Keunggulan Kami:</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-shield-halved"></i> Garansi Resmi dan Terjamin</li>
+                        <li><i class="fa-solid fa-tags"></i> Harga Paling Kompetitif</li>
+                        <li><i class="fa-solid fa-truck-fast"></i> Pengiriman Cepat dan Aman</li>
+                        <li><i class="fa-solid fa-headset"></i> Layanan Pelanggan 24/7</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="hubungi-kami" class="full-width-section">
+            <h2>Hubungi Kami 📞</h2>
+            <div class="info-card">
+                <p>Tim kami siap membantu Anda! Jangan ragu untuk menghubungi kami melalui:</p>
+                <p><strong><i class="fa-solid fa-envelope"></i> Email:</strong> zallcellular@gmail.com</p>
+                <p><strong><i class="fa-solid fa-phone"></i> Telepon:</strong> (0711) 123-4567</p>
+                <p><strong><i class="fa-brands fa-whatsapp"></i> WhatsApp:</strong> +62 857-6699-9715</p>
+                
+                <form id="contact-form" class="contact-form">
+                    <h4>Kirim Pesan Cepat</h4>
+                    <input type="text" id="contact-name" placeholder="Nama Anda" required>
+                    <input type="email" id="contact-email" placeholder="Email Anda" required>
+                    <textarea id="contact-message" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                    <button type="submit" class="btn-kirim"><i class="fa-solid fa-paper-plane"></i> Kirim Pesan</button>
+                </form>
+
+                <div id="contact-notification" class="konfirmasi-box hidden" style="background-color: #e6f7ff; border: 1px solid #007bff; margin-top: 20px;">
+                    <h3 style="color: #007bff;"><i class="fa-solid fa-check-circle"></i> Pesan Terkirim</h3>
+                    <p>Pesan Anda telah berhasil diterima oleh Admin Toko. Kami akan segera membalas!</p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Zall Cellular | Layanan Cepat & Terpercaya</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
